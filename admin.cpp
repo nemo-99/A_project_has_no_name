@@ -90,6 +90,47 @@
     }
 
    cout<<endl;
-   
+
     file.close();
+  }
+
+  void administrator:: update()
+  {
+    file.open("movies.txt");
+
+    string update="movie_";
+    char c;
+
+    cout<<"\nenter the number of the  movie you want to update\n";
+    cin>>c;
+
+    update.push_back(c);
+
+    while(getline(file,movie))
+    {
+      if(movie==update)
+      {
+        cout<<"\nmatch is found correctly as"<<update;
+        long pos=file.tellg();
+        getline(file,movie);
+        string new_movie;
+        cout<<"\nEnter the new movie:\n";
+        cin>>new_movie;
+        int size,new_size;
+        size=movie.size();
+        new_size=new_movie.size();
+        file.seekp(pos);
+        file<<new_movie;
+         if(size>new_size)
+         {
+          for(int i=new_size;i<size;i++)
+          {
+            file<<" ";
+          }
+         }
+        break;
+      }
+    }
+     file.close();
+
   }
