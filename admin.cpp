@@ -46,7 +46,7 @@
    {
     choice=0;
     cout<<"    ***** MENU ***** \n";
-    cout<<"\t1.Set ticket price\n\t2.Update movies\n\t3.Booking status\n\t4.Change password\nPlease enter your choice\n";
+    cout<<"\t1.Update movies\n\t2.Booking status\n\t3.Change password\n\t4.exit\nPlease enter your choice\n";
     cin>>choice;
 
     switch(choice)
@@ -96,6 +96,8 @@
 
   void administrator:: update()
   {
+    fstream file;
+    string movie;
     file.open("movies.txt");
 
     string update="movie_";
@@ -103,6 +105,7 @@
 
     cout<<"\nenter the number of the  movie you want to update\n";
     cin>>c;
+    cin.ignore();
 
     update.push_back(c);
 
@@ -115,11 +118,12 @@
         getline(file,movie);
         string new_movie;
         cout<<"\nEnter the new movie:\n";
-        cin>>new_movie;
+        getline(cin,new_movie);
         int size,new_size;
         size=movie.size();
         new_size=new_movie.size();
         file.seekp(pos);
+        new_movie.push_back('\n');
         file<<new_movie;
          if(size>new_size)
          {
@@ -132,5 +136,4 @@
       }
     }
      file.close();
-
   }
