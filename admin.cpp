@@ -5,37 +5,38 @@
 
  void administrator :: check()
   {
-   char password[9],test[9];
-   int count=0;
+   string password,test;
+     int count=0;
 
-  fstream file;
-  file.open("password.txt",ios::in);
-  file.getline(password,9);
-  file.close();
+    fstream file;
+    file.open("password.txt",ios::in);
+    getline(file,password);
+    file.close();
+    cout<<"\n The password is "<<password<<endl;
+   do
+   {
+    count++;
 
- do
- {
-  count++;
+    cout<<"\nEnter the password";
+    cin>>test;
 
-  cout<<"\nEnter the password";
-  cin>>test;
+    if(password==test)
+      {
+       cout<<"\nThe password is correct";
+       break;
+      }
+    else
+      cout<<"\nInvalid entry";
 
-  if(strcmp(password,test)==0)
-    {
-     cout<<"\nThe password is correct";
-     break;
-    }
-  else
-    cout<<"\nInvalid entry";
+   }while(count<3);
 
- }while(count<3);
+    if(count==3)
+     cout<<"\n YOU HAVE USED YOUR THREE CHANCE";
+    else
+      menu();
 
-  if(count==3)
-   cout<<"\n YOU HAVE USED YOUR THREE CHANCE";
-  else
-    menu();
 
-  return;
+    return;
  }
 
   void administrator :: menu()
@@ -137,3 +138,29 @@
     }
      file.close();
   }
+
+void administrator ::change()
+{
+  string password;
+  int i=1;
+  fstream file;
+  file.open("password.txt");
+ while(i==1)
+ {
+  cin>>password;
+ if(password.size()==9)
+   {
+     cout<<"\nThe password is updated succesfully\n";
+     i=0;
+   }
+ else
+   {
+     cout<<"\ninvalid lenght please enter a password of 9 characters\n";
+   }
+ }
+
+  file<<password;
+
+  file.close();
+
+}

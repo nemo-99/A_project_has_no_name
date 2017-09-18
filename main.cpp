@@ -8,19 +8,17 @@ class movie_name
     char str[50];
     int number;
 public:
-    void input(char *);
+    void input(string);
     void upload();
     void download();
     void display();
     void search_replace();
 };
 
-void movie_name :: input(char *c)
+void movie_name :: input(string c)
 {
     cout << c << endl;
     cin.getline(str,49,'\n');
-
-
 }
 
 void movie_name :: upload()
@@ -31,7 +29,7 @@ void movie_name :: upload()
      f.open("movie.DAT",ios::out);
      while(1)
     {
-
+       check=0;
        input("Enter a movie name");
        f.write((char *) this , sizeof(movie_name) );
        number++;
