@@ -33,7 +33,7 @@ public:
 
 class client
 {
-  node *head[26];
+  node head[26];
 public:
  client()
  {
