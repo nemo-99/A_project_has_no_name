@@ -21,7 +21,7 @@ public:
     cin>>age;
     cout<<"\nEnter your password :";
     cin>>password;
-    cout<<"\n\nThe account is created succesfully\n"
+    cout<<"\n\nThe account is created succesfully\n";
   }
 
   node()
@@ -48,7 +48,7 @@ public:
   {
     node *temp;
     fstream file("users.DAT");
-    while( f.read((char *) temp , sizeof(node) ) )
+    while( file.read((char *) temp , sizeof(node) ) )
     {
         string name=temp->name;
         int ch = ((int)name[0])-65;
